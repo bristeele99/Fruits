@@ -3,9 +3,7 @@ const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
 const Fruit = require('./models/Fruit.js');
-const fruits = require('./models/fruits.js');
 const Vegetable = require('./models/Vegetable.js')
-const vegetables = require('./models/vegetables.js')
 
 
 // Set up the view engine
@@ -95,7 +93,7 @@ app.post('/vegetables', (req, res) => {
 app.get('/fruits/:id', (req, res) =>  {
     //findOne returns the first object that matches _id: req.params.id  
     Fruit.findOne({ _id: req.params.id}).then((foundFruit)=>{
-        res.render('Show', {
+        res.render('fruits/Show', {
             fruit: foundFruit
     });
     })
@@ -105,7 +103,7 @@ app.get('/fruits/:id', (req, res) =>  {
 app.get('/vegetables/:id', (req, res) =>  {
     //findOne returns the first object that matches _id: req.params.id  
     Vegetable.findOne({ _id: req.params.id}).then((foundVegetable)=>{
-        res.render('Show', {
+        res.render('vegtables/Show', {
             vegetable: foundVegetable
     });
     })
